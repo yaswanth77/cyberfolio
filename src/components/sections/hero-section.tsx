@@ -199,7 +199,7 @@ export function HeroSection() {
             {/* Render image only after mount to prevent potential hydration issues with layout/objectFit if server differs slightly */}
             {isMounted && (
                 <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/profile-pic.jpg`}
+                src="/cyberfolio/profile-pic.jpg"
                 fill 
                 alt="Yaswanth Reddy Sunkara Portrait"
                 className="object-cover"
