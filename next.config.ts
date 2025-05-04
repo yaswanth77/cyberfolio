@@ -1,8 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export', // 👈 required for static export
-  basePath: '/cyberfolio', // 👈 use your actual repo name here
+  output: 'export',
+  basePath: '/cyberfolio',
   assetPrefix: '/cyberfolio/',
 
   typescript: {
