@@ -1,7 +1,10 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export', // 👈 required for static export
+  basePath: '/cyberfolio', // 👈 use your actual repo name here
+  assetPrefix: '/cyberfolio/',
+
   typescript: {
     ignoreBuildErrors: true,
   },
