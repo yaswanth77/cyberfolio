@@ -73,8 +73,8 @@ const photoHoverVariants = {
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   // Exact text from the image for the typewriter
-  const rolesText = "Cybersecurity | SOC Operations | Digital Forensics | Incident Response | Threat Detection | Offensive Security Enthusiast";
-  const descriptionText = "Cybersecurity professional with over 3 years of experience in SOC operations, Forensics, Incident Response, threat detection, and Penetration Testing across IT environments. Proficient in SIEM, EDR, and XDR for identifying and mitigating threats. Experienced in MITRE ATT&CK, vulnerability management, Web Application Security, Malware Analysis, and automation using Python. Certified in CEH, eJPT, Security+; pursuing OSCP and CDSA to expand offensive and defensive capabilities.";
+  const rolesText = "Cybersecurity | Red & Blue Teaming | SecOps | DFIR | Threat Detection | Offensive Security | Penetration Testing ";
+  const descriptionText = "Cybersecurity professional with 3+ years of experience in penetration testing, incident response, cloud security, application security, secOps. Proven ability to uncover and remediate critical vulnerabilities across IT environments. Proficient in OWASP, Splunk, vulnerability management, security automation, and tool development using Python. Certified in CEH, eJPT, and Security+, currently pursuing OSCP and CDSA to expand both offensive and defensive capabilities. Experienced in communicating security findings to both technical and non-technical teams.";
   const [isMounted, setIsMounted] = useState(false); // Track mount state
 
   useEffect(() => {
