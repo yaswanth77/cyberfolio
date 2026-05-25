@@ -1,214 +1,125 @@
-"use client"; // Add this directive for Framer Motion hooks and client-side interactions
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail, Phone } from 'lucide-react';
-import Image from 'next/image';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Typewriter } from '@/components/typewriter'; // Import the Typewriter component
-import { useState, useEffect } from 'react'; // Import useState and useEffect
-import { cn } from '@/lib/utils'; // Import cn
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { TerminalHero } from "@/components/terminal-hero";
+import { CountUp } from "@/components/count-up";
+import { identity, stats } from "@/lib/content";
 
-// Framer Motion Variants
-const containerVariants = {
+const container = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2, // Stagger animation for children
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 10,
-    },
-  },
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 90, damping: 14 } },
 };
-
-const photoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            delay: 0.6, // Delay slightly after text
-            duration: 0.5,
-            ease: "easeOut",
-        },
-    },
-};
-
-const iconHoverVariants = {
-    hover: {
-        scale: 1.15,
-        boxShadow: "0 0 15px hsl(var(--accent))", // Glow effect using accent color
-        transition: {
-            type: "spring",
-            stiffness: 300,
-            damping: 15,
-        }
-    }
-};
-
-const photoHoverVariants = {
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 0 25px 5px hsl(var(--accent) / 0.5)", // Teal glow border pulse
-      transition: {
-        duration: 0.4,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
-      }
-    }
-}
 
 export function HeroSection() {
-  const prefersReducedMotion = useReducedMotion();
-  // Exact text from the image for the typewriter
-  const rolesText = "Cybersecurity | Red & Blue Teaming | SecOps | DFIR | Threat Detection | Offensive Security | Penetration Testing ";
-  const descriptionText = "Cybersecurity professional with 3+ years of experience in penetration testing, incident response, cloud security, application security, secOps. Proven ability to uncover and remediate critical vulnerabilities across IT environments. Proficient in OWASP, Splunk, vulnerability management, security automation, and tool development using Python. Certified in CEH, eJPT, and Security+, currently pursuing OSCP and CDSA to expand both offensive and defensive capabilities. Experienced in communicating security findings to both technical and non-technical teams.";
-  const [isMounted, setIsMounted] = useState(false); // Track mount state
-
-  useEffect(() => {
-    setIsMounted(true); // Set mounted to true after component mounts
-  }, []);
-
-  // Simplified variants for reduced motion or before mount
-  const reducedItemVariants = {
-      hidden: { opacity: 0 },
-      visible: { opacity: 1, transition: { duration: 0.01 } }, // Almost instant fade-in
-  };
-
-  // Determine which variants to use based on motion preference and mount state
-  const currentContainerVariants = !prefersReducedMotion && isMounted ? containerVariants : undefined;
-  const currentItemVariants = !prefersReducedMotion && isMounted ? itemVariants : reducedItemVariants;
-  const currentPhotoVariants = !prefersReducedMotion && isMounted ? photoVariants : reducedItemVariants;
-  const currentIconHoverVariants = !prefersReducedMotion && isMounted ? iconHoverVariants : undefined;
-  const currentPhotoHoverVariants = !prefersReducedMotion && isMounted ? photoHoverVariants : undefined;
-  if (isMounted) {
-    console.log("rolesText value:", rolesText);
-  }
   return (
-    // Added min-h-screen, flex, items-center and adjusted padding
     <section
       id="home"
-      className="flex min-h-screen items-center py-16 md:py-20 bg-gradient-to-b from-background to-secondary/20 dark:from-background dark:to-secondary/10 overflow-hidden"
+      className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-12"
     >
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4 sm:px-6 lg:px-8">
-        {/* Text Content Column */}
-        <motion.div
-          className={cn("space-y-6 text-center md:text-left")}
-          variants={currentContainerVariants}
-          initial="hidden"
-          animate={isMounted ? "visible" : "hidden"} // Animate only when mounted
-        >
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight"
-            variants={currentItemVariants}
-          >
-            Yaswanth Reddy Sunkara
-          </motion.h1>
-
-          {/* Use Typewriter for roles */}
-           <motion.div className="text-lg md:text-xl text-accent font-semibold min-h-[3em]"
-             variants={currentItemVariants}
+      <div className="absolute inset-0 grid-bg" aria-hidden />
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          {/* Left: intro */}
+          <motion.div variants={container} initial="hidden" animate="visible">
+            <motion.p
+              variants={item}
+              className="eyebrow inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1"
             >
-             {/* Conditional rendering based on isMounted and prefersReducedMotion */}
-             {/* Log the value of rolesText just before using it */}
-             {isMounted && !prefersReducedMotion && <Typewriter text={rolesText} delay={500} />}
-             {/* Fallback for SSR/reduced motion */}
-             {(!isMounted || prefersReducedMotion) && <span>{rolesText}</span>}
-           </motion.div>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              Offensive security · AI red-teaming
+            </motion.p>
 
+            <motion.h1
+              variants={item}
+              className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              {identity.name}
+            </motion.h1>
 
-          <motion.p
-            className="text-base md:text-lg text-foreground/80"
-            variants={currentItemVariants}
-          >
-            {descriptionText} {/* Use the variable for description */}
-          </motion.p>
+            <motion.p
+              variants={item}
+              className="mt-4 font-mono text-lg font-medium text-gradient sm:text-xl"
+            >
+              {identity.headline}
+            </motion.p>
 
-          <motion.div className="flex justify-center md:justify-start space-x-4 pt-4"
-             variants={currentItemVariants} // Apply variants to the container div
-          >
-             {/* Wrap each button for individual hover animation */}
-            <motion.div variants={currentIconHoverVariants} whileHover={isMounted ? "hover" : {}}>
-                <Button variant="outline" size="icon" asChild >
-                <a href="https://github.com/yaswanth77" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <Github className="h-5 w-5" />
+            <motion.p
+              variants={item}
+              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
+              {identity.pitch}
+            </motion.p>
+
+            <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg" className="gap-2 font-medium">
+                <a href="#projects">
+                  View Work <ArrowDown className="h-4 w-4" />
                 </a>
-                </Button>
-            </motion.div>
-             <motion.div variants={currentIconHoverVariants} whileHover={isMounted ? "hover" : undefined}>
-                <Button variant="outline" size="icon" asChild >
-                <a href="https://linkedin.com/in/yaswanthreddysunkara" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" />
-                </a>
-                </Button>
-            </motion.div>
-            <motion.div variants={currentIconHoverVariants} whileHover={isMounted ? "hover" : undefined}>
-                <Button variant="outline" size="icon" asChild>
-                <a href="mailto:sunkarayaswanthreddy@gmail.com" aria-label="Email">
-                    <Mail className="h-5 w-5" />
-                </a>
-                </Button>
-            </motion.div> 
-            <motion.div variants={currentIconHoverVariants} whileHover={isMounted ? "hover" : undefined}>
-                <Button variant="outline" size="icon" asChild>
-                <a href="tel:+12409408567" aria-label="Phone">
-                    <Phone className="h-5 w-5" />
-                </a>
-                </Button>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="gap-2 font-medium">
+                <a href="#contact">Get in touch</a>
+              </Button>
+              <div className="flex items-center gap-2 sm:ml-2">
+                {[
+                  { href: identity.github, icon: Github, label: "GitHub" },
+                  { href: identity.linkedin, icon: Linkedin, label: "LinkedIn" },
+                  { href: `mailto:${identity.email}`, icon: Mail, label: "Email" },
+                ].map(({ href, icon: Icon, label }) => (
+                  <Button
+                    key={label}
+                    asChild
+                    variant="ghost"
+                    size="icon"
+                    className="text-muted-foreground hover:text-accent"
+                  >
+                    <a
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
-        </motion.div>
 
-        {/* Profile Photo Column */}
-        <motion.div
-            className={cn("flex justify-center md:justify-end")}
-            variants={currentPhotoVariants}
-            initial="hidden"
-            animate={isMounted ? "visible" : "hidden"} // Animate only when mounted
-        >
+          {/* Right: terminal */}
           <motion.div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-lg border-4 border-accent/50"
-            whileHover={
-              isMounted
-                ? {
-                  scale: 1.05,
-                  boxShadow: "0 0 25px 5px hsl(var(--accent) / 0.5)",
-                  transition: {
-                  duration: 0.4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                },
-              }
-            : {}
-          }
-        >
-             {/* Image rendering is handled inside the motion div */}
-            {/* Render image only after mount to prevent potential hydration issues with layout/objectFit if server differs slightly */}
-            {isMounted && (
-                <Image
-                src="/cyberfolio/profile-pic.jpg"
-                fill 
-                alt="Yaswanth Reddy Sunkara Portrait"
-                className="object-cover"
-                priority
-                unoptimized 
-                />
-            )}
-            {!isMounted && <div className="w-full h-full bg-muted"></div>} {/* Placeholder */}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+          >
+            <TerminalHero />
           </motion.div>
+        </div>
+
+        {/* Stat strip */}
+        <motion.div
+          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border/60 bg-border/40 sm:grid-cols-3 lg:grid-cols-6"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          {stats.map((s) => (
+            <div key={s.label} className="bg-background/80 px-4 py-5 text-center">
+              <div className="font-mono text-2xl font-bold text-gradient sm:text-3xl">
+                <CountUp value={s.value} />
+              </div>
+              <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

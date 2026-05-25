@@ -1,17 +1,35 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { ConsoleEasterEgg } from '@/components/console-easter-egg';
 
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-mono',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'YRS Cyberfolio - Yaswanth Reddy Sunkara',
-  description: 'Cybersecurity portfolio showcasing skills, experience, and projects of Yaswanth Reddy Sunkara.',
+  title: 'Yaswanth Reddy Sunkara - Security Engineer & Pentester',
+  description:
+    'Portfolio of Yaswanth Reddy Sunkara: Security Engineer, Penetration Tester, and AI Security Researcher. Offensive security, AppSec, cloud, and LLM red-teaming.',
+  keywords: [
+    'Penetration Testing',
+    'Application Security',
+    'AI Security',
+    'LLM Red Teaming',
+    'Offensive Security',
+    'Cybersecurity',
+  ],
+  authors: [{ name: 'Yaswanth Reddy Sunkara' }],
 };
 
 export default function RootLayout({
@@ -21,8 +39,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Use inter.variable to apply font globally via CSS variable */}
-      <body className={`${inter.variable} font-sans antialiased`}>
+      {/* Easter egg for the curious: try the browser console ;) */}
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -31,6 +49,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <ConsoleEasterEgg />
         </ThemeProvider>
       </body>
     </html>
