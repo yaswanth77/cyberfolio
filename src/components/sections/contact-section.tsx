@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { identity } from "@/lib/content";
-import { Mail, Github, Linkedin, Copy, Check } from "lucide-react";
+import { Mail, Github, Linkedin, Copy, Check, BookOpen, Trophy } from "lucide-react";
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -58,7 +58,7 @@ export function ContactSection() {
           </div>
 
           {/* socials */}
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button asChild variant="outline" size="lg" className="gap-2">
               <a href={identity.github} target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" /> GitHub
@@ -67,6 +67,16 @@ export function ContactSection() {
             <Button asChild variant="outline" size="lg" className="gap-2">
               <a href={identity.linkedin} target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" /> LinkedIn
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="gap-2">
+              <a href={identity.medium} target="_blank" rel="noopener noreferrer">
+                <BookOpen className="h-5 w-5" /> Medium
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="gap-2">
+              <a href={identity.wpscan} target="_blank" rel="noopener noreferrer">
+                <Trophy className="h-5 w-5" /> WPScan
               </a>
             </Button>
           </div>

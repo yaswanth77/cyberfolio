@@ -17,6 +17,8 @@ export const identity = {
   githubHandle: "github.com/yaswanth77",
   linkedin: "https://linkedin.com/in/yaswanthreddysunkara",
   linkedinHandle: "linkedin.com/in/yaswanthreddysunkara",
+  medium: "https://medium.com/@yaswanthrs007",
+  wpscan: "https://wpscan.com/leaderboard/",
 };
 
 export const stats = [
