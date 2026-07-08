@@ -310,6 +310,7 @@ export const bugBounty = {
   platforms: ["HackerOne", "Bugcrowd", "Wordfence"],
   points: [
     "Active across HackerOne, Bugcrowd, and Wordfence programs.",
+    "5 assigned CVEs (CVE-2026-11360, 11361, 11567, 11870, 12583) across 40+ WordPress plugins with 14M+ installs.",
     "CVE research and real-world responsible vulnerability disclosure.",
     "WordPress and plugin security auditing via Wordfence Intelligence.",
   ],
