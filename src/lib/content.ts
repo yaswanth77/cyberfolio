@@ -10,7 +10,7 @@ export const identity = {
     "Offensive Security · AppSec · Cloud · AI/LLM & Agentic-AI Security · SOC & Incident Response",
   heroLine: "I break and build things.",
   pitch:
-    "Cybersecurity professional with 3+ years across penetration testing, application security, AI/LLM security, incident response, and vulnerability management spanning enterprise, government, healthcare, and Big Four environments. I find critical vulnerabilities, build tools that automate the boring parts of security, and red-team the new class of AI systems.",
+    "Cybersecurity professional with 3+ years across penetration testing, application security, AI/LLM security, incident response, and vulnerability management spanning enterprise, government, healthcare, and Big Four environments. I find critical vulnerabilities, build tools that automate the boring parts of security, and red-team the new class of AI systems, with 5 assigned CVEs from independent vulnerability research.",
   ctaLine: "Open to interesting problems, collaborations & good conversations.",
   email: "yaswanthrs007@gmail.com",
   github: "https://github.com/yaswanth77",
@@ -25,6 +25,7 @@ export const stats = [
   { value: "3+", label: "Years in cybersecurity" },
   { value: "50+", label: "Penetration tests executed" },
   { value: "120+", label: "Vulnerabilities found & fixed" },
+  { value: "5+", label: "Assigned CVEs" },
   { value: "1,000+", label: "Security alerts triaged" },
   { value: "3+", label: "Open-source security tools" },
   { value: "4.00", label: "M.Eng. GPA (UMD)" },

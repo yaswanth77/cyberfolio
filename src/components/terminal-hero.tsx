@@ -19,6 +19,7 @@ const items: Item[] = [
   { kind: "command", text: "./recon --summary" },
   { kind: "output", text: "[+] 3+ yrs offensive & defensive security" },
   { kind: "output", text: "[+] 120+ vulnerabilities found & disclosed" },
+  { kind: "output", text: "[+] 5 assigned CVEs across 40+ WordPress plugins" },
   { kind: "output", text: "[+] 1,000+ security alerts triaged" },
   { kind: "output", text: "[+] Bug bounty · AppSec · Cloud · AI/LLM security" },
   { kind: "output", text: "[+] CEH · PEH · eJPTv2 · OSCP in progress" },
